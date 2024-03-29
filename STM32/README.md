@@ -1,5 +1,7 @@
 # 利用 STM32 模擬 USB 滑鼠  
 利用官方的 STM32F103RB-Nucleo 倉庫範例改寫  
+所需要的程式東西如下  
+![dependency.png](dependency.png "dependency.png")  
   
 ## USBD_HID_SendReport 程式  
 位於`\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Src\usbd_hid.c`中  
