@@ -60,7 +60,8 @@ USBD_StatusTypeDef USBD_LL_Transmit(USBD_HandleTypeDef *pdev, uint8_t ep_addr,
 ```
   
 此程式每呼叫一次變數`cnt`會加一  
-因此滑鼠會先向左移動再往右移  
+因此滑鼠會先向右移動再往左移  
+想要垂直移動可以新增變數`y`的程式部分  
 ```c
 /**
   * @brief  Gets Pointer Data.
