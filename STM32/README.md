@@ -3,6 +3,20 @@
 所需要的程式東西如下  
 ![dependency.png](dependency.png "dependency.png")  
   
+## int main(void) 程式  
+跟滑鼠有關部分如下
+```c
+GetPointerData(HID_Buffer);
+USBD_HID_SendReport(&USBD_Device, HID_Buffer, 4);
+```
+  
+其中`USBD_Device`和`HID_Buffer`的定義為
+```c
+/* Private variables ---------------------------------------------------------*/
+USBD_HandleTypeDef USBD_Device;
+uint8_t HID_Buffer[4];
+```
+  
 ## USBD_HID_SendReport 程式  
 位於`\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Src\usbd_hid.c`中  
   
