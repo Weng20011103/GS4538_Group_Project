@@ -50,3 +50,40 @@ USBD_StatusTypeDef USBD_LL_Transmit(USBD_HandleTypeDef *pdev, uint8_t ep_addr,
   return USBD_OK;
 }
 ```
+  
+## GetPointerData 程式  
+位於`Projects/STM32F103RB-Nucleo/Applications/USB_Device/HID_Standalone/Src/main.c`中  
+  
+滑鼠位移的大小可以改變第32行`CURSOR_STEP`來達成  
+```c
+#define CURSOR_STEP     5
+```
+  
+此程式每呼叫一次變數`cnt`會加一  
+因此滑鼠會先向左移動再往右移  
+```c
+/**
+  * @brief  Gets Pointer Data.
+  * @param  pbuf: Pointer to report
+  * @retval None
+  */
+static void GetPointerData(uint8_t *pbuf)
+{
+  static int8_t cnt = 0;
+  int8_t  x = 0, y = 0 ;
+  
+  if(cnt++ > 0)
+  {
+    x = CURSOR_STEP;
+  }
+  else
+  {
+    x = -CURSOR_STEP;
+  }
+  
+  pbuf[0] = 0;
+  pbuf[1] = x;
+  pbuf[2] = y;
+  pbuf[3] = 0;
+}
+```
