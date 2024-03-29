@@ -34,7 +34,7 @@ uint8_t USBD_HID_SendReport(USBD_HandleTypeDef  *pdev,
 }
 ```
   
-'USBD_LL_Transmit'位於`Middlewares\ST\STM32_USB_Device_Library\Core\Src`中的`usbd_conf_template.c`  
+`USBD_LL_Transmit`位於`Middlewares\ST\STM32_USB_Device_Library\Core\Src`中的`usbd_conf_template.c`  
 ```c
 /**
   * @brief  Transmits data over an endpoint.
