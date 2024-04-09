@@ -24,7 +24,7 @@ Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-l
   
 ## 執行 STM32 ST-LINK utility  
 執行`STM32 ST-LINK utility`  
-**有錯誤參考下方解法**  
+**如果有錯誤參考下方解法**  
 ![9.png](pictures/9.png "9.png")
   
 開啟後初始頁面如下，點擊紅框的`Connect`選項
@@ -51,7 +51,7 @@ Google 搜尋 Microsoft Visual C++ 2015 [官網](https://www.microsoft.com/zh-tw
 **後來發現`vc_redist.x86.exe`也需要同時下載**
 ![bug6.png](pictures/bug6.png "bug6.png")
   
-執行`vc_redist.x64.exe`完成`Microsoft Visual C++ 2015`的安裝
+執行`vc_redist.x64.exe`和`vc_redist.x86.exe`完成`Microsoft Visual C++ 2015`的安裝
 ![bug7.png](pictures/bug7.png "bug7.png")
 ![bug8.png](pictures/bug8.png "bug8.png")
   
@@ -59,14 +59,16 @@ Google 搜尋 Microsoft Visual C++ 2015 [官網](https://www.microsoft.com/zh-tw
 Google 搜尋`STM32CubeMX`的[官網](https://www.st.com/en/development-tools/stm32cubemx.html)
 ![CubeMX1.png](pictures/CubeMX1.png "CubeMX1.png")
   
-下滑網頁選擇 Windows 版本點擊`Getlatest`
+下滑網頁選擇 Windows 版本點擊`Get latest`
 ![CubeMX2.png](pictures/CubeMX2.png "CubeMX2.png")
   
 下滑說明書點擊`Accept`
 ![CubeMX3.png](pictures/CubeMX3.png "CubeMX3.png")
   
-登入帳號或訪客下載壓縮檔`en.stm32cubemx-win-v6-11-0.zip`
+登入帳號或訪客選項
 ![CubeMX4.png](pictures/CubeMX4.png "CubeMX4.png")
+  
+下載壓縮檔`en.stm32cubemx-win-v6-11-0.zip`
 ![CubeMX5.png](pictures/CubeMX5.png "CubeMX5.png")
   
 解壓縮`en.stm32cubemx-win-v6-11-0.zip`並執行`SetupSTM32CubeMX-6.11.0-Win.exe`進行安裝
