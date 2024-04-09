@@ -74,6 +74,15 @@ Google 搜尋`STM32CubeMX`的[官網](https://www.st.com/en/development-tools/st
 解壓縮`en.stm32cubemx-win-v6-11-0.zip`並執行`SetupSTM32CubeMX-6.11.0-Win.exe`進行安裝
 ![CubeMX6.png](pictures/CubeMX6.png "CubeMX6.png")
   
+選擇`Install for me only (recommended)`
+![CubeMX7.png](pictures/CubeMX7.png "CubeMX7.png")
+  
+預設安裝路徑於`C:\Users\使用者名\AppData\Local\Programs\STM32CubeMX'
+![CubeMX8.png](pictures/CubeMX8.png "CubeMX8.png")
+  
+等待安裝完成
+![CubeMX9.png](pictures/CubeMX9.png "CubeMX9.png")
+  
 ## KEIL  
 Google 搜尋`keil mdk-arm`點擊第一個[網站](https://www.arm.com/zh-TW/products/development-tools/embedded-and-software/keil-mdk)
 ![Keil1.png](pictures/Keil1.png "Keil1.png")
