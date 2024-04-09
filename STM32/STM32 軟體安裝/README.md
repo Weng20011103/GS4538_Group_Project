@@ -18,7 +18,7 @@ Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-l
 解壓縮`en.stsw-link004.zip`並執行`setup.exe`
 ![6.png](pictures/6.png "6.png")
   
-執行`setup.exe`的內容完成安裝
+執行`setup.exe`的內容完成安裝  
 ![7.png](pictures/7.png "7.png")
 ![8.png](pictures/8.png "8.png")
   
