@@ -1,5 +1,5 @@
 # STM32 軟體安裝  
-此網頁會教學如何安裝`STM32 ST-LINK utility`、`STM32CubeMX`和``。  
+此網頁會教學如何安裝`STM32 ST-LINK utility`、`STM32CubeMX`和`Keil µVision5`。  
   
 ## STM32 ST-LINK utility 安裝  
 Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-link004.html)
