@@ -24,6 +24,7 @@ Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-l
   
 ## 執行 STM32 ST-LINK utility  
 執行`STM32 ST-LINK utility`  
+**有錯誤參考下方解法**  
 ![9.png](pictures/9.png "9.png")
   
 開啟後初始頁面如下，點擊紅框的`Connect`選項
@@ -46,7 +47,7 @@ Google 搜尋 Microsoft Visual C++ 2015 [官網](https://www.microsoft.com/zh-tw
 下滑網站點擊`下載`
 ![bug5.png](pictures/bug5.png "bug5.png")
   
-選擇`vc_redist.x64.exe`選項按下載
+選擇`vc_redist.x64.exe`選項按下載  
 **後來發現`vc_redist.x86.exe`也需要同時下載**
 ![bug6.png](pictures/bug6.png "bug6.png")
   
