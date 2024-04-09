@@ -9,8 +9,10 @@ Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-l
 下滑說明書點擊`Accept`
 ![3.png](pictures/3.png "3.png")
   
-登入帳號或訪客下載壓縮檔`en.stsw-link004.zip`
+登入帳號或訪客選項
 ![4.png](pictures/4.png "4.png")
+  
+下載壓縮檔`en.stsw-link004.zip`
 ![5.png](pictures/5.png "5.png")
   
 解壓縮`en.stsw-link004.zip`並執行`setup.exe`
