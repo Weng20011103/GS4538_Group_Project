@@ -1,4 +1,6 @@
 # STM32 軟體安裝  
+此網頁會教學如何安裝`STM32 ST-LINK utility`、`STM32CubeMX`和``。  
+  
 ## STM32 ST-LINK utility 安裝  
 Google 搜尋 [stm32 link 官網](https://www.st.com/en/development-tools/stsw-link004.html)
 ![1.png](pictures/1.png "1.png")  
@@ -83,7 +85,7 @@ Google 搜尋`STM32CubeMX`的[官網](https://www.st.com/en/development-tools/st
 等待安裝完成
 ![CubeMX9.png](pictures/CubeMX9.png "CubeMX9.png")
   
-## KEIL  
+## Keil µVision5  
 Google 搜尋`keil mdk-arm`點擊第一個[網站](https://www.arm.com/zh-TW/products/development-tools/embedded-and-software/keil-mdk)
 ![Keil1.png](pictures/Keil1.png "Keil1.png")
   
@@ -93,9 +95,9 @@ Google 搜尋`keil mdk-arm`點擊第一個[網站](https://www.arm.com/zh-TW/pro
 點擊`Download µVision`
 ![Keil3.png](pictures/Keil3.png "Keil3.png")
   
-會跳轉至[此網站](https://www.keil.com/demo/eval/arm.htm)填寫訊息後按`Submit`
+會跳轉至[此網站](https://www.keil.com/demo/eval/arm.htm)填寫訊息後按`Submit`  
 ![Keil4.png](pictures/Keil4.png "Keil4.png")
   
 點擊`MDK539.EXE`進行下載  
-**2024年4月10日此檔案大約有913 MB**  
+**此檔案大約有913 MB 註: 2024年4月10日**  
 ![Keil5.png](pictures/Keil5.png "Keil5.png")
