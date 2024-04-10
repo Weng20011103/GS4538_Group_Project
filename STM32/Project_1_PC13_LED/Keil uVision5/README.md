@@ -38,7 +38,7 @@
 延遲時間的函數 `HAL_Delay` 位於 `Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c`中  
 ![12.png](pictures/12.png "12.png")
   
-將下方程式寫入`main.c`中**注意程式的位置**  
+將下方程式寫入`main.c`中 **注意程式的位置**  
 ```c
 HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
 HAL_Delay(500);
@@ -62,7 +62,7 @@ HAL_Delay(500);
 按下`Load`的圖示  
 ![18.png](pictures/18.png "18.png")
   
-出現`Not a genuine ST Device! Abort connection`錯誤**看的懂英文應該知道意思吧**  
+出現`Not a genuine ST Device! Abort connection`錯誤 **看的懂英文應該知道意思吧**  
 ![19.png](pictures/19.png "19.png")
   
 錯誤後續  
