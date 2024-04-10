@@ -26,7 +26,7 @@
 將`System Core`之中的`RCC`的 High Speed Clock 選擇`Crystal/Ceramic Resonator`選項
 ![8.png](pictures/8.png "8.png")
   
-Pinout view 中在`PC13`腳位上左鍵選擇`GPIO_Output`
+Pinout view 中在`PC13`腳位上左鍵選擇`GPIO_Output`  
 ![9.png](pictures/9.png "9.png")
   
 此時 Pinout view 如下所示  
@@ -58,3 +58,24 @@ Pinout view 中在`PC13`腳位上左鍵選擇`GPIO_Output`
   
 開啟`Code Generator`  
 ![19.png](pictures/19.png "19.png")
+  
+選擇`Copy only the necessary library files`  
+![20.png](pictures/20.png "20.png")
+  
+開啟`GENERATE CODE`  
+![21.png](pictures/21.png "21.png")
+  
+按`Yes`安裝依賴文件  
+![22.png](pictures/22.png "22.png")
+  
+跳出登入要求  
+![23.png](pictures/23.png "23.png")
+  
+登入帳號  
+![24.png](pictures/24.png "24.png")
+  
+等待下載完成  
+![25.png](pictures/25.png "25.png")
+  
+按`Open Project`使用 Keil µVision5 開啟專案  
+![26.png](pictures/26.png "26.png")
