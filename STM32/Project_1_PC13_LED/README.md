@@ -28,3 +28,33 @@
   
 Pinout view 中在`PC13`腳位上左鍵選擇`GPIO_Output`
 ![9.png](pictures/9.png "9.png")
+  
+此時 Pinout view 如下所示  
+![10.png](pictures/10.png "10.png")
+  
+右鍵在`PC13`腳位選擇`Enter User Label`  
+![11.png](pictures/11.png "11.png")
+  
+輸入自己想要的名稱  
+![12.png](pictures/12.png "12.png")
+  
+改名成功  
+![13.png](pictures/13.png "13.png")
+  
+在`System Core`選擇`GPIO`能看到 GPIO 配置  
+![14.png](pictures/14.png "14.png")
+  
+開啟`Clock Configuration`  
+![15.png](pictures/15.png "15.png")
+  
+改紅框中的東西  
+![16.png](pictures/16.png "16.png")
+  
+開啟`Project Manager`  
+![17.png](pictures/17.png "17.png")
+  
+填寫 Project Name，選擇檔案位置以及將 Toolchain / IDE 選擇`MDK-ARM`  
+![18.png](pictures/18.png "18.png")
+  
+開啟`Code Generator`  
+![19.png](pictures/19.png "19.png")
