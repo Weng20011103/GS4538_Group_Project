@@ -45,9 +45,10 @@ HAL_Delay(500);
 HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 HAL_Delay(500);
 ```
+**圖中 GPIOC 打錯成 GPIOA**
 ![13.png](pictures/13.png "13.png")
   
-按下`Build`的圖示
+按下`Build`的圖示  
 ![14.png](pictures/14.png "14.png")
   
 出現`Target uses ARM-Compoler 'Default Compiler Version 5' which is not available`錯誤  
@@ -80,5 +81,5 @@ HAL_Delay(500);
 把`Enable`取消打勾    
 ![24.png](pictures/24.png "24.png")
   
-重新按下`Load`的圖示即可看到 LED 閃爍的效果  
+重新按下`Load`的圖示後成功燒錄即可看到 LED 閃爍的效果  
 ![25.png](pictures/25.png "25.png")
