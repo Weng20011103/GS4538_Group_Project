@@ -15,26 +15,26 @@ Google 搜尋`keil mdk-arm`點擊第一個[網站](https://www.arm.com/zh-TW/pro
 **此檔案大約有913 MB 註: 2024年4月10日**  
 ![Keil5.png](pictures/Keil5.png "Keil5.png")
   
-執行`MDK539.EXE`
+執行`MDK539.EXE`  
 ![Keil6.png](pictures/Keil6.png "Keil6.png")
   
 預設 Core 位於 `C:\Keil_v5`
 ![Keil7.png](pictures/Keil7.png "Keil7.png")
   
-填寫資料
+填寫資料  
 ![Keil8.png](pictures/Keil8.png "Keil8.png")
   
-安裝`KEIL - Tools By ARM 通用序列匯流排控制器`
+安裝`KEIL - Tools By ARM 通用序列匯流排控制器`  
 ![Keil9.png](pictures/Keil9.png "Keil9.png")
   
-安裝完成
+安裝完成  
 ![Keil10.png](pictures/Keil10.png "Keil10.png")
   
-啟動`Keil µVision5`
+啟動`Keil µVision5`  
 ![Keil11.png](pictures/Keil11.png "Keil11.png")
   
-會跳出`Pack Installer`按`OK`
+會跳出`Pack Installer`按`OK`  
 ![Keil12.png](pictures/Keil12.png "Keil12.png")
   
-`Pack Installer`頁面如下
+`Pack Installer`頁面如下  
 ![Keil13.png](pictures/Keil13.png "Keil13.png")
