@@ -28,7 +28,7 @@
 參考`dvi2rgb/docs/dvi2rgb.pdf`可知訊號內容如下表:  
 |訊號|說明|
 |:---|:---|
-|TMDS|包含 Clk_p/Clk_n 、Data_p[2:0]/Data_n[2:0] 等訊號|
+|TMDS|包含 Clk_p/Clk_n、Data_p[2:0]/Data_n[2:0] 等訊號|
 |RefClk|接 200 MHz 時鐘訊號|
 |aRst 或 aRst_n|Asynchronous reset。RefClk 不在規格範圍內時要啟用|
 |pRst 或 pRst_n|只有在 PixelClk 上升沿時才會被識別並執行重置動作|
