@@ -11,12 +11,6 @@
 選擇`OK`  
 ![3.png](pictures/3.png "3.png")
   
-在`Device`中選擇`STM32F103C8`  
-![4.png](pictures/4.png "4.png")
-  
-在`Packs`中安裝`Keil::STM32NUCLEO_B...`  
-![5.png](pictures/5.png "5.png")
-  
 等待右下方進度條跑完  
 ![6.png](pictures/6.png "6.png")
   
