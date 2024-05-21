@@ -78,5 +78,5 @@ HAL_Delay(500);
 重新按下`Load`的圖示後成功燒錄  
 ![25.png](pictures/25.png "25.png")
   
-將燒錄器從電腦拔除後，插上`Micro USB`的連接孔即可看到`PC13`的 LED 閃爍  
+將燒錄器從電腦拔除後，插上`Micro USB`的連接孔即可看到`PC13`的藍色 LED 閃爍  
 ![26.png](pictures/26.png "26.png")
