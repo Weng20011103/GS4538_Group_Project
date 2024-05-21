@@ -26,10 +26,10 @@
 點開`Application/User/Core`中的`main.c`  
 ![10.png](pictures/10.png "10.png")
   
-操控 GPIO 的函數 `HAL_GPIO_WritePin` 位於 `Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c`中  
+操控 GPIO 的函數`HAL_GPIO_WritePin`位於`Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c`中  
 ![11.png](pictures/11.png "11.png")
   
-延遲時間的函數 `HAL_Delay` 位於 `Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c`中  
+延遲時間的函數`HAL_Delay`位於`Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c`中  
 ![12.png](pictures/12.png "12.png")
   
 將下方程式寫入`main.c`中 **注意程式的位置**  
@@ -57,13 +57,13 @@ HAL_Delay(500);
 按下`Load`的圖示  
 ![18.png](pictures/18.png "18.png")
   
-出現`Not a genuine ST Device! Abort connection`錯誤 **看的懂英文應該知道意思吧**  
+出現`Not a genuine ST Device! Abort connection`錯誤  
 ![19.png](pictures/19.png "19.png")
   
 錯誤後續  
 ![20.png](pictures/20.png "20.png")
   
-因錯誤停止下載  
+顯示因為錯誤停止下載  
 ![21.png](pictures/21.png "21.png")
   
 按下`Options for Target...`的圖示  
@@ -72,8 +72,11 @@ HAL_Delay(500);
 在`Debug`中選擇右邊的`Settings`  
 ![23.png](pictures/23.png "23.png")
   
-把`Enable`取消打勾    
+在`Pack`中把`Enable`取消打勾    
 ![24.png](pictures/24.png "24.png")
   
-重新按下`Load`的圖示後成功燒錄即可看到 LED 閃爍的效果  
+重新按下`Load`的圖示後成功燒錄  
 ![25.png](pictures/25.png "25.png")
+  
+將燒錄器從電腦拔除後，插上`Micro USB`的連接孔即可看到`PC13`的 LED 閃爍  
+![26.png](pictures/26.png "26.png")
