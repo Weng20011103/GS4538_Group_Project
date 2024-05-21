@@ -39,7 +39,7 @@
 ## 勾選同意列表後按 Next  
 ![12.png](pictures/12.png "12.png")
   
-## 自訂義安裝選項後按 Next  
+## 自定義安裝選項後按 Next  
 ![13.png](pictures/13.png "13.png")
   
 ## 安裝程式詢問是否新建資料夾按 OK  
