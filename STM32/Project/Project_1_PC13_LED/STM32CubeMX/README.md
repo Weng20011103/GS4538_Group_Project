@@ -65,6 +65,12 @@ Pinout view 中在`PC13`腳位上左鍵選擇`GPIO_Output`
 開啟`GENERATE CODE`  
 ![21.png](pictures/21.png "21.png")
   
+如果出現`No Firmwave Package is selected on Project Setting`訊息點`OK`。  
+![error1.png](pictures/error1.png "error1.png")
+  
+在 Updater Settings 中點`OK`。  
+![error2.png](pictures/error2.png "error2.png")
+  
 按`Yes`安裝依賴文件  
 ![22.png](pictures/22.png "22.png")
   
