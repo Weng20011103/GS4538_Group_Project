@@ -3,7 +3,7 @@
 1. Google 搜尋`vivado-library`點擊[ GitHub 網站](https://github.com/Digilent/vivado-library)  
 ![1.png](pictures/1.png "1.png")
   
-2. 點擊 Releases  
+2. 點擊`Releases`  
 ![2.png](pictures/2.png "2.png")
   
 3. 點擊 Digilent Vivado Library 2018.2 Support  
@@ -16,7 +16,7 @@
 ![5.png](pictures/5.png "5.png")
   
 ## DVI-to-RGB (Sink) 1.9 IP Core  
-1. 在 Vivado 中使用此 IP 能自訂義部分如下表:  
+在 Vivado 中使用此 IP 能自訂義部分如下表:  
 |選項|說明|
 |:---|:---|
 |Enable DDC ROM|決定 DDC 是否啟用|
@@ -25,7 +25,7 @@
 
 ![6.png](pictures/6.png "6.png")
   
-2. 參考`dvi2rgb/docs/dvi2rgb.pdf`可知訊號內容如下表:  
+參考`dvi2rgb/docs/dvi2rgb.pdf`可知訊號內容如下表:  
 |訊號|說明|
 |:---|:---|
 |TMDS|包含 Clk_p/Clk_n 、Data_p[2:0]/Data_n[2:0] 等訊號|
