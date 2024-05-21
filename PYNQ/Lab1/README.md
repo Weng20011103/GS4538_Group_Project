@@ -42,7 +42,7 @@
 ## 自訂義安裝選項後按 Next  
 ![13.png](pictures/13.png "13.png")
   
-## 安裝程式新建資料夾按 OK  
+## 安裝程式詢問是否新建資料夾按 OK  
 ![14.png](pictures/14.png "14.png")
   
 ## 點擊 Install 開始下載  
@@ -50,3 +50,26 @@
   
 ## 等待下載完成  
 ![16.png](pictures/16.png "16.png")
+  
+## 安裝進行到第三部分會需要安裝其他軟體  
+按安裝  
+![17.png](pictures/17.png "17.png")
+  
+## 安裝 WinPcap  
+按 Next  
+![18.png](pictures/18.png "18.png")
+  
+按 I Agree  
+![19.png](pictures/19.png "19.png")
+  
+按 Install  
+![20.png](pictures/20.png "20.png")
+  
+按 Finish  
+![21.png](pictures/21.png "21.png")
+  
+## 允許 OpenJDK Platform binary  
+![22.png](pictures/22.png "22.png")
+  
+## Vivado 2022.1 安裝完成  
+![23.png](pictures/23.png "23.png")
