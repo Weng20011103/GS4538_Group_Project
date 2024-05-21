@@ -1,6 +1,6 @@
 # Lab 2: DVI-to-RGB (Sink) 1.9 IP Core  
 ## 下載 DVI-to-RGB (Sink) 1.9 IP Core  
-1. Google 搜尋`ivado-library`點擊[ GitHub 網站](https://github.com/Digilent/vivado-library)  
+1. Google 搜尋`vivado-library`點擊[ GitHub 網站](https://github.com/Digilent/vivado-library)  
 ![1.png](pictures/1.png "1.png")
   
 2. 點擊 Releases  
@@ -21,7 +21,7 @@
 |:---|:---|
 |Enable DDC ROM|決定 DDC 是否啟用|
 |Enable serial clock output|決定 SerialClk 是否啟用|
-|Resets active high|決定`aRst`和`pRst`是`1`或`0`啟用|
+|Resets active high|決定 aRst 和 pRst 是 1 或 0 啟用|
 
 ![6.png](pictures/6.png "6.png")
   
