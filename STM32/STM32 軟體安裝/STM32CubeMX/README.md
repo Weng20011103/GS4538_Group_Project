@@ -20,7 +20,7 @@ Google 搜尋`STM32CubeMX`的[官網](https://www.st.com/en/development-tools/st
 選擇`Install for me only (recommended)`
 ![CubeMX7.png](pictures/CubeMX7.png "CubeMX7.png")
   
-預設安裝路徑於`C:\Users\使用者名\AppData\Local\Programs\STM32CubeMX'
+預設安裝路徑於`C:\Users\使用者名\AppData\Local\Programs\STM32CubeMX`
 ![CubeMX8.png](pictures/CubeMX8.png "CubeMX8.png")
   
 等待安裝完成
