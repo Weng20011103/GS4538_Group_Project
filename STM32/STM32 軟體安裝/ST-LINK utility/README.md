@@ -46,10 +46,10 @@ Google 搜尋 Microsoft Visual C++ 2015 [官網](https://www.microsoft.com/zh-tw
 下滑網站點擊`下載`
 ![bug5.png](pictures/bug5.png "bug5.png")
   
-選擇`vc_redist.x64.exe`選項按下載  
-**後來發現`vc_redist.x86.exe`也需要同時下載**
+選擇`vc_redist.x86.exe`選項按下載  
+**如果是 64 位元的作業系統和 64 型處理器只要下載`vc_redist.x86.exe`即可**
 ![bug6.png](pictures/bug6.png "bug6.png")
   
-執行`vc_redist.x64.exe`和`vc_redist.x86.exe`完成`Microsoft Visual C++ 2015`的安裝
+執行`vc_redist.x86.exe`完成`Microsoft Visual C++ 2015`的安裝
 ![bug7.png](pictures/bug7.png "bug7.png")
 ![bug8.png](pictures/bug8.png "bug8.png")
