@@ -36,7 +36,7 @@ HAL_Delay(1000);
 進行`Build`和`Download`到`STM32F103C8T6`板子上。  
 ![5.png](pictures/5.png "5.png")
   
-將燒錄器從電腦拔除後，將`STM32F103C8T6`板子插上`Micro USB`的連接線至電腦即可多了一個`STM32 Human interface`輸入設備  
+將燒錄器從電腦拔除後，將`STM32F103C8T6`板子插上`Micro USB`的連接線至電腦即可看到多了一個`STM32 Human interface`輸入設備  
 ***系統>藍芽與裝置>裝置***  
 ![6.png](pictures/6.png "6.png")
   

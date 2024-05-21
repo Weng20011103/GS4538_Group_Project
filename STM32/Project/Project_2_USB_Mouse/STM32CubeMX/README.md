@@ -11,7 +11,7 @@
 在`System Core`中的`SYS`選項把`Debug`改成`Serial Wire`  
 ![3.png](pictures/3.png "3.png")
   
-在`Connectivity`中的`USB_DEVICE`選項把`Device`打勾  
+在`Connectivity`中的`USB_DEVICE`選項把`Device (FS)`打勾  
 ![4.png](pictures/4.png "4.png")
   
 在`Middleware and S....`中的`USB`選項把`Class For FS IP`改成`Human Interface Device Class (HID)`  
