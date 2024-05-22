@@ -1,8 +1,8 @@
 module myip_v1_0_M_AXIS #(
     // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
-    parameter integer C_M_AXIS_TDATA_WIDTH	= 32,
+    parameter integer C_M_AXIS_TDATA_WIDTH = 32,
     // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
-    parameter integer C_M_START_COUNT	= 32
+    parameter integer C_M_START_COUNT = 32
 )
 (
     // Users to add ports here
@@ -43,7 +43,7 @@ function integer clogb2 (input integer bit_depth);
 endfunction
 
 // WAIT_COUNT_BITS is the width of the wait counter.
-// C_M_START_COUNT	= 32
+// C_M_START_COUNT = 32
 // WAIT_COUNT_BITS = 5
 localparam integer WAIT_COUNT_BITS = clogb2(C_M_START_COUNT-1);
 
