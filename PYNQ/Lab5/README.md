@@ -368,6 +368,10 @@ reg  	tx_done;
 ```
   
 ## 內部信號連接到模組的輸出端口  
+在 AXI Stream 協議中，TSTRB 是一個字節使能信號，用於指示 TDATA 中的哪些字節是有效的。  
+每一位 TSTRB 對應 TDATA 中的一個字節。例如，如果 TSTRB 為 4'b1010，則表示 TDATA 中的第 1 和第 3 字節是有效的。  
+  
+在這個例子中，{(C_M_AXIS_TDATA_WIDTH/8){1'b1}} 生成了一個全為 1 的向量，長度為 C_M_AXIS_TDATA_WIDTH/8。這表示所有的 TDATA 字節都是有效的。  
 ```v
 // I/O Connections assignments
 //將 axis_tvalid_delay 信號連接到 M_AXIS_TVALID 端口。
@@ -379,7 +383,7 @@ assign M_AXIS_TDATA	= stream_data_out;
 //將 axis_tlast_delay 信號連接到 M_AXIS_TLAST 端口。
 //表示流數據的最後一個信號會被延遲一個時鐘週期後輸出。
 assign M_AXIS_TLAST	= axis_tlast_delay;
-////將一個值為全 1 的向量連接到 M_AXIS_TSTRB 端口。
+//將一個值為全 1 的向量連接到 M_AXIS_TSTRB 端口。
 //向量的長度為 C_M_AXIS_TDATA_WIDTH/8，這表示每個字節都是有效的。
 assign M_AXIS_TSTRB	= {(C_M_AXIS_TDATA_WIDTH/8){1'b1}};
 ```
