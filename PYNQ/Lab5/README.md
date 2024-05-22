@@ -497,11 +497,11 @@ always@(posedge M_AXIS_ACLK) begin
 	        tx_done <= 1'b0;                                                     
             end                                                                    
         end                                                                        
-	    else if (read_pointer == NUMBER_OF_OUTPUT_WORDS) begin                                                                      
-                // tx_done is asserted when NUMBER_OF_OUTPUT_WORDS numbers of streaming data
-	        // has been out.                                                         
-	        tx_done <= 1'b1;                                                         
-        end                                                                        
+	else if (read_pointer == NUMBER_OF_OUTPUT_WORDS) begin                                                                      
+            // tx_done is asserted when NUMBER_OF_OUTPUT_WORDS numbers of streaming data
+	    // has been out.                                                         
+	    tx_done <= 1'b1;                                                         
+    end                                                                        
 end  
 ```
   
