@@ -38,7 +38,7 @@ Google 搜尋`pynq z2 board file`，點擊[PYNQ-Z2 - 一元素科技股份有限
 按右上角`X`圖示  
 ![12.png](pictures/12.png "圖十二")
   
-選擇`Next`選項來離開 Vivado 應用程式  
+選擇`OK`選項來離開 Vivado 應用程式  
 ![13.png](pictures/13.png "圖十三")
   
 ## 參考資料  
