@@ -513,14 +513,14 @@ end
 assign tx_en = M_AXIS_TREADY && axis_tvalid;   
 	                                                     
 // Streaming output data is read from FIFO       
-    always @( posedge M_AXIS_ACLK ) begin                                            
+always @( posedge M_AXIS_ACLK ) begin                                            
     if(!M_AXIS_ARESETN) begin                                        
         stream_data_out <= 1;                      
     end
     else if (tx_en) begin// && M_AXIS_TSTRB[byte_index]  
     //如果 tx_en 為真（即 FIFO 讀取被使能），則將 read_pointer + 1 的值賦給 stream_data_out。
     //這表示每次讀取 FIFO 時，都會讀取下一個數據。                        
-    stream_data_out <= read_pointer + 32'b1;   
+        stream_data_out <= read_pointer + 32'b1;   
     end                                          
 end        
 ```
