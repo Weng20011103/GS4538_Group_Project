@@ -381,75 +381,75 @@ bit_depth = bit_depth >> 1;
 ## 實現一個控制狀態機  
 狀態機監控從 FIFO 寫入輸入流數據以及從 FIFO 輸出流數據。  
 ```v
-	// Control state machine implementation                             
-	always @(posedge M_AXIS_ACLK) //在 M_AXIS_ACLK 的上升沿觸發。
-	begin                                                                     
-	  if (!M_AXIS_ARESETN) //如果 M_AXIS_ARESETN 為低（即異步重設被觸發）
-	  // Synchronous reset (active low)                                       
-	    begin                                                                 
-	      mst_exec_state <= IDLE; //將 mst_exec_state 設置為 IDLE
-	      count    <= 0; //將 count 設置為 0。
-	    end                                                                   
-	  else                                                                    
-	    case (mst_exec_state) //根據 mst_exec_state 的值來執行不同的操作。
-	      IDLE: //在此狀態下，當 count 為 0 時，狀態機將轉換到 INIT_COUNTER 狀態。否則，它將保持在 IDLE 狀態。
+// Control state machine implementation                             
+always @(posedge M_AXIS_ACLK) begin //在 M_AXIS_ACLK 的上升沿觸發。                                                
+    if (!M_AXIS_ARESETN) begin
+    //如果 M_AXIS_ARESETN 為低（即異步重設被觸發）
+    // Synchronous reset (active low)                                       
+        mst_exec_state <= IDLE; //將 mst_exec_state 設置為 IDLE
+        count    <= 0; //將 count 設置為 0。
+    end                                                                   
+    else
+        //根據 mst_exec_state 的值來執行不同的操作。                                             
+        case (mst_exec_state)
+            IDLE:
+            //在此狀態下，當 count 為 0 時，狀態機將轉換到 INIT_COUNTER 狀態。
+            //否則，它將保持在 IDLE 狀態。
 	        // The slave starts accepting tdata when                          
 	        // there tvalid is asserted to mark the                           
 	        // presence of valid streaming data                               
-	        //if ( count == 0 )                                                 
-	        //  begin                                                           
-	            mst_exec_state  <= INIT_COUNTER;                              
-	        //  end                                                             
-	        //else                                                              
-	        //  begin                                                           
-	        //    mst_exec_state  <= IDLE;                                      
-	        //  end                                                             
+	            //if ( count == 0 ) begin                                                           
+                mst_exec_state  <= INIT_COUNTER;                              
+                //  end                                                             
+                //else begin                                                           
+                    //mst_exec_state  <= IDLE;                                      
+                //  end                                                             
 	                                                                          
-	      INIT_COUNTER: //在此狀態下，如果 count 達到 C_M_START_COUNT - 1，則狀態機將轉換到 SEND_STREAM 狀態。否則，count 將增加 1，並且狀態機將保持在 INIT_COUNTER 狀態。
+            INIT_COUNTER:
+            //在此狀態下，如果 count 達到 C_M_START_COUNT - 1，則狀態機將轉換到 SEND_STREAM 狀態。
+            //否則，count 將增加 1，並且狀態機將保持在 INIT_COUNTER 狀態。
 	        // The slave starts accepting tdata when                          
 	        // there tvalid is asserted to mark the                           
 	        // presence of valid streaming data                               
-	        if ( count == C_M_START_COUNT - 1 )                               
-	          begin                                                           
-	            mst_exec_state  <= SEND_STREAM;                               
-	          end                                                             
-	        else                                                              
-	          begin                                                           
-	            count <= count + 1;                                           
-	            mst_exec_state  <= INIT_COUNTER;                              
-	          end                                                             
+                if ( count == C_M_START_COUNT - 1 ) begin                                                           
+                    mst_exec_state  <= SEND_STREAM;                               
+                end                                                             
+                else begin                                                           
+                    count <= count + 1;                                           
+                    mst_exec_state  <= INIT_COUNTER;                              
+                end                                                             
 	                                                                          
-	      SEND_STREAM: //在此狀態下，如果 tx_done 為真（即所有存儲在 FIFO 中的流數據已經被主設備發出），則狀態機將轉換到 IDLE 狀態。否則，它將保持在 SEND_STREAM 狀態。
-	        // The example design streaming master functionality starts       
-	        // when the master drives output tdata from the FIFO and the slave
-	        // has finished storing the S_AXIS_TDATA                          
-	        if (tx_done)                                                      
-	          begin                                                           
-	            mst_exec_state <= IDLE;                                       
-	          end                                                             
-	        else                                                              
-	          begin                                                           
-	            mst_exec_state <= SEND_STREAM;                                
-	          end                                                             
-	    endcase                                                               
-	end                                                    
+                SEND_STREAM:
+                //在此狀態下，如果 tx_done 為真（即所有存儲在 FIFO 中的流數據已經被主設備發出），則狀態機將轉換到 IDLE 狀態。
+                //否則，它將保持在 SEND_STREAM 狀態。
+                // The example design streaming master functionality starts       
+                // when the master drives output tdata from the FIFO and the slave
+                // has finished storing the S_AXIS_TDATA                          
+                    if (tx_done) begin                                                           
+                        mst_exec_state <= IDLE;                                       
+                    end                                                             
+                    else begin                                                           
+                        mst_exec_state <= SEND_STREAM;                                
+                    end                                                             
+        endcase                                                               
+end                                                    
 ```
   
 ## AXI 流信號生成
 `axis_tvalid`是一個有效性信號，當控制狀態機的狀態為 SEND_STREAM 且輸出流數據的數量小於 NUMBER_OF_OUTPUT_WORDS 時，該信號會被置位。這表示只有在發送流數據且數據數量未達到最大值時，數據才是有效的。  
 ```v
-	//tvalid generation
-	//axis_tvalid is asserted when the control state machine's state is SEND_STREAM and
-	//number of output streaming data is less than the NUMBER_OF_OUTPUT_WORDS.
-	assign axis_tvalid = ((mst_exec_state == SEND_STREAM) && (read_pointer < NUMBER_OF_OUTPUT_WORDS));
+//tvalid generation
+//axis_tvalid is asserted when the control state machine's state is SEND_STREAM and
+//number of output streaming data is less than the NUMBER_OF_OUTPUT_WORDS.
+assign axis_tvalid = ((mst_exec_state == SEND_STREAM) && (read_pointer < NUMBER_OF_OUTPUT_WORDS));
 ```
   
 `axis_tlast`是一個表示流數據結束的信號，當輸出流數據的數量等於 NUMBER_OF_OUTPUT_WORDS-1 時，該信號會被置位。這表示當所有的數據都已經發送完畢時，會發出一個信號來表示數據流的結束。  
 ```v
-	// AXI tlast generation                                                                        
-	// axis_tlast is asserted number of output streaming data is NUMBER_OF_OUTPUT_WORDS-1          
-	// (0 to NUMBER_OF_OUTPUT_WORDS-1)                                                             
-	assign axis_tlast = (read_pointer == NUMBER_OF_OUTPUT_WORDS-1);       
+// AXI tlast generation                                                                        
+// axis_tlast is asserted number of output streaming data is NUMBER_OF_OUTPUT_WORDS-1          
+// (0 to NUMBER_OF_OUTPUT_WORDS-1)                                                             
+assign axis_tlast = (read_pointer == NUMBER_OF_OUTPUT_WORDS-1);       
 ```
   
 ## 匹配 M_AXIS_TDATA 的延遲  
@@ -510,23 +510,20 @@ bit_depth = bit_depth >> 1;
   
 ## FIFO 讀取使能信號的生成以及從 FIFO 讀取流數據  
 ```v
-	//FIFO read enable generation 
-    //將 M_AXIS_TREADY 和 axis_tvalid 的邏輯與結果賦給 tx_en。
-    //這表示只有當 M_AXIS_TREADY 和 axis_tvalid 都為真時，才會使能 FIFO 的讀取。
-	assign tx_en = M_AXIS_TREADY && axis_tvalid;   
+//FIFO read enable generation 
+//將 M_AXIS_TREADY 和 axis_tvalid 的邏輯與結果賦給 tx_en。
+//這表示只有當 M_AXIS_TREADY 和 axis_tvalid 都為真時，才會使能 FIFO 的讀取。
+assign tx_en = M_AXIS_TREADY && axis_tvalid;   
 	                                                     
-	    // Streaming output data is read from FIFO       
-	    always @( posedge M_AXIS_ACLK )                  
-	    begin                                            
-	      if(!M_AXIS_ARESETN)                            
-	        begin                                        
-	          stream_data_out <= 1;                      
-	        end
-	      else if (tx_en)// && M_AXIS_TSTRB[byte_index]  
-          //如果 tx_en 為真（即 FIFO 讀取被使能），則將 read_pointer + 1 的值賦給 stream_data_out。
-          //這表示每次讀取 FIFO 時，都會讀取下一個數據。
-	        begin                                        
-	          stream_data_out <= read_pointer + 32'b1;   
-	        end                                          
-	    end        
+// Streaming output data is read from FIFO       
+    always @( posedge M_AXIS_ACLK ) begin                                            
+    if(!M_AXIS_ARESETN) begin                                        
+        stream_data_out <= 1;                      
+    end
+    else if (tx_en) begin// && M_AXIS_TSTRB[byte_index]  
+    //如果 tx_en 為真（即 FIFO 讀取被使能），則將 read_pointer + 1 的值賦給 stream_data_out。
+    //這表示每次讀取 FIFO 時，都會讀取下一個數據。                        
+    stream_data_out <= read_pointer + 32'b1;   
+    end                                          
+end        
 ```
