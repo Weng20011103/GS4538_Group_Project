@@ -1,4 +1,4 @@
-module myip_v1_0_M_AXIS #(
+module myip_v1_1_M_AXIS #(
     // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
     parameter integer C_M_AXIS_TDATA_WIDTH = 32,
     // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
@@ -68,6 +68,7 @@ reg [bit_num-1:0] read_pointer;
 
 // AXI Stream internal signals
 // wait counter. The master waits for the user defined number of clock cycles before initiating a transfer.
+// WAIT_COUNT_BITS = 5
 reg [WAIT_COUNT_BITS-1 : 0] count;
 // streaming data valid
 wire axis_tvalid;
@@ -98,7 +99,7 @@ always @(posedge M_AXIS_ACLK) begin
 	// Synchronous reset (active low)
 	if (!M_AXIS_ARESETN) begin
 		mst_exec_state <= IDLE;
-		count    <= 0;
+		count <= 0;
 	end
 	else begin
 		case (mst_exec_state)
