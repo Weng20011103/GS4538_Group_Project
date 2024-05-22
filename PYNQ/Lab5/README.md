@@ -317,7 +317,7 @@ bit_depth = bit_depth >> 1;
 狀態機的狀態:  
 1. `IDLE`: 這是初始/閒置狀態，狀態機在開始時會處於此狀態。  
 2. `INIT_COUNTER`: 這個狀態會初始化計數器，一旦計數器達到 C_M_START_COUNT 的計數，狀態機就會變為 SEND_STREAM 狀態。　　
-3. `SEND_STREAM`： 在這個狀態下，流數據(stream data)會通過 M_AXIS_TDATA 輸出。  
+3. `SEND_STREAM`: 在這個狀態下，流數據(stream data)會通過 M_AXIS_TDATA 輸出。  
 ```v
 // Define the states of state machine                                                
 // The control state machine oversees the writing of input streaming data to the FIFO,
@@ -325,10 +325,10 @@ bit_depth = bit_depth >> 1;
 parameter [1:0] IDLE = 2'b00,   // This is the initial/idle state               
 	                                                                                     
                 INIT_COUNTER  = 2'b01,  // This state initializes the counter, once   
-	                                    // the counter reaches C_M_START_COUNT count,        
-	                                    // the state machine changes state to SEND_STREAM     
+	                                // the counter reaches C_M_START_COUNT count,        
+	                                // the state machine changes state to SEND_STREAM     
                 SEND_STREAM   = 2'b10;  // In this state the                          
-	                                    // stream data is output through M_AXIS_TDATA   
+	                                // stream data is output through M_AXIS_TDATA   
 ```
 ## 內部信號  
 1. `count`: 等待計數器。主設備會等待用戶定義的時鐘週期數量，然後再開始傳輸。  
