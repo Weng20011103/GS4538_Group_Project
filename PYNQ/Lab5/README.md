@@ -465,17 +465,16 @@ assign axis_tlast = (read_pointer == NUMBER_OF_OUTPUT_WORDS-1);
 ```v
 // Delay the axis_tvalid and axis_tlast signal by one clock cycle                              
 // to match the latency of M_AXIS_TDATA                                                        
-always @(posedge M_AXIS_ACLK)                                                                  
-	begin                                                                                          
-        if (!M_AXIS_ARESETN) begin                                                                                      
-            axis_tvalid_delay <= 1'b0;                                                               
-            axis_tlast_delay <= 1'b0;                                                                
-	    end                                                                                        
-        else begin                                                                                      
-            axis_tvalid_delay <= axis_tvalid;                                                        
-            axis_tlast_delay <= axis_tlast;                                                          
-	    end                                                                                        
-	end                                                                                            
+always @(posedge M_AXIS_ACLK) begin                                                                                          
+    if (!M_AXIS_ARESETN) begin                                                                                      
+        axis_tvalid_delay <= 1'b0;                                                               
+        axis_tlast_delay <= 1'b0;                                                                
+    end                                                                                        
+    else begin                                                                                      
+        axis_tvalid_delay <= axis_tvalid;                                                        
+        axis_tlast_delay <= axis_tlast;                                                          
+    end                                                                                        
+end                                                                                            
 ```
   
 ## read_pointer 指針和 tx_done 信號的更新  
