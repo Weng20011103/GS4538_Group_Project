@@ -237,18 +237,17 @@
   
 這些參數可以在模組實例化時被賦予特定的值，以便在不同的情況下重用同一個模組。在這個模組中，這些參數被用來配置地址匯流排的寬度和主設備的開始計數。  
 ```v
-module myip_v1_0_M_AXIS #
-	(
-		// Users to add parameters here
+module myip_v1_0_M_AXIS #(
+    // Users to add parameters here
 
-		// User parameters ends
-		// Do not modify the parameters beyond this line
+    // User parameters ends
+    // Do not modify the parameters beyond this line
 
-		// Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
-		parameter integer C_M_AXIS_TDATA_WIDTH	= 32,
-		// Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
-		parameter integer C_M_START_COUNT	= 32
-	)
+    // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
+    parameter integer C_M_AXIS_TDATA_WIDTH	= 32,
+    // Start count is the number of clock cycles the master will wait before initiating/issuing any transaction.
+    parameter integer C_M_START_COUNT	= 32
+)
 ```
   
 ## myip_v1_0_M_AXIS 模組的端口定義部分  
@@ -262,26 +261,26 @@ module myip_v1_0_M_AXIS #
 7. `M_AXIS_TREADY`: 輸入線路，表示從屬設備可以在當前週期接受一個傳輸。  
 ```v
 (
-		// Users to add ports here
+    // Users to add ports here
 
-		// User ports ends
-		// Do not modify the ports beyond this line
+    // User ports ends
+    // Do not modify the ports beyond this line
 
-		// Global ports
-		input wire  M_AXIS_ACLK,
-		// 
-		input wire  M_AXIS_ARESETN,
-		// Master Stream Ports. TVALID indicates that the master is driving a valid transfer, A transfer takes place when both TVALID and TREADY are asserted. 
-		output wire  M_AXIS_TVALID,
-		// TDATA is the primary payload that is used to provide the data that is passing across the interface from the master.
-		output wire [C_M_AXIS_TDATA_WIDTH-1 : 0] M_AXIS_TDATA,
-		// TSTRB is the byte qualifier that indicates whether the content of the associated byte of TDATA is processed as a data byte or a position byte.
-		output wire [(C_M_AXIS_TDATA_WIDTH/8)-1 : 0] M_AXIS_TSTRB,
-		// TLAST indicates the boundary of a packet.
-		output wire  M_AXIS_TLAST,
-		// TREADY indicates that the slave can accept a transfer in the current cycle.
-		input wire  M_AXIS_TREADY
-	);
+    // Global ports
+    input wire  M_AXIS_ACLK,
+    // 
+    input wire  M_AXIS_ARESETN,
+    // Master Stream Ports. TVALID indicates that the master is driving a valid transfer, A transfer takes place when both TVALID and TREADY are asserted. 
+    output wire  M_AXIS_TVALID,
+    // TDATA is the primary payload that is used to provide the data that is passing across the interface from the master.
+    output wire [C_M_AXIS_TDATA_WIDTH-1 : 0] M_AXIS_TDATA,
+    // TSTRB is the byte qualifier that indicates whether the content of the associated byte of TDATA is processed as a data byte or a position byte.
+    output wire [(C_M_AXIS_TDATA_WIDTH/8)-1 : 0] M_AXIS_TSTRB,
+    // TLAST indicates the boundary of a packet.
+    output wire  M_AXIS_TLAST,
+    // TREADY indicates that the slave can accept a transfer in the current cycle.
+    input wire  M_AXIS_TREADY
+);
 ```
   
 ## 定義一些參數和一個函數 clogb2  
@@ -290,23 +289,23 @@ module myip_v1_0_M_AXIS #
 3. `WAIT_COUNT_BITS`: 這是一個本地參數，表示等待計數器的寬度。它的值是 C_M_START_COUNT-1 的以 2 為底的對數的天花板值。  
 4. `bit_num`: 這是一個本地參數，表示需要多少位來處理`depth`大小的 FIFO。它的值是 NUMBER_OF_OUTPUT_WORDS 的以 2 為底的對數的天花板值。  
 ```v
-	// Total number of output data                                                 
-	localparam NUMBER_OF_OUTPUT_WORDS = 8;                                               
+// Total number of output data                                                 
+localparam NUMBER_OF_OUTPUT_WORDS = 8;                                               
 	                                                                                     
-	// function called clogb2 that returns an integer which has the                      
-	// value of the ceiling of the log base 2.                                           
-	function integer clogb2 (input integer bit_depth);                                   
-	  begin                                                                              
-	    for(clogb2=0; bit_depth>0; clogb2=clogb2+1)                                      
-	      bit_depth = bit_depth >> 1;                                                    
-	  end                                                                                
-	endfunction                                                                          
+// function called clogb2 that returns an integer which has the                      
+// value of the ceiling of the log base 2.                                           
+function integer clogb2 (input integer bit_depth);
+    begin                                                                              
+        for(clogb2=0; bit_depth>0; clogb2=clogb2+1)                                      
+            bit_depth = bit_depth >> 1;                                                    
+    end                                                                                
+endfunction                                                                          
 	                                                                                     
-	// WAIT_COUNT_BITS is the width of the wait counter.                                 
-	localparam integer WAIT_COUNT_BITS = clogb2(C_M_START_COUNT-1);                      
+// WAIT_COUNT_BITS is the width of the wait counter.                                 
+localparam integer WAIT_COUNT_BITS = clogb2(C_M_START_COUNT-1);                      
 	                                                                                     
-	// bit_num gives the minimum number of bits needed to address 'depth' size of FIFO.  
-	localparam bit_num  = clogb2(NUMBER_OF_OUTPUT_WORDS);    
+// bit_num gives the minimum number of bits needed to address 'depth' size of FIFO.  
+localparam bit_num  = clogb2(NUMBER_OF_OUTPUT_WORDS);    
 ```
   
 bit_depth 右移一位，這相當於將 bit_depth 除以 2。  
@@ -320,16 +319,16 @@ bit_depth = bit_depth >> 1;
 2. `INIT_COUNTER`: 這個狀態會初始化計數器，一旦計數器達到 C_M_START_COUNT 的計數，狀態機就會變為 SEND_STREAM 狀態。　　
 3. `SEND_STREAM`： 在這個狀態下，流數據(stream data)會通過 M_AXIS_TDATA 輸出。  
 ```v
-	// Define the states of state machine                                                
-	// The control state machine oversees the writing of input streaming data to the FIFO,
-	// and outputs the streaming data from the FIFO                                      
-	parameter [1:0] IDLE = 2'b00,        // This is the initial/idle state               
+// Define the states of state machine                                                
+// The control state machine oversees the writing of input streaming data to the FIFO,
+// and outputs the streaming data from the FIFO                                      
+parameter [1:0] IDLE = 2'b00,   // This is the initial/idle state               
 	                                                                                     
-	                INIT_COUNTER  = 2'b01, // This state initializes the counter, once   
-	                                // the counter reaches C_M_START_COUNT count,        
-	                                // the state machine changes state to SEND_STREAM     
-	                SEND_STREAM   = 2'b10; // In this state the                          
-	                                     // stream data is output through M_AXIS_TDATA   
+                INIT_COUNTER  = 2'b01,  // This state initializes the counter, once   
+	                                    // the counter reaches C_M_START_COUNT count,        
+	                                    // the state machine changes state to SEND_STREAM     
+                SEND_STREAM   = 2'b10;  // In this state the                          
+	                                    // stream data is output through M_AXIS_TDATA   
 ```
 ## 內部信號  
 1. `count`: 等待計數器。主設備會等待用戶定義的時鐘週期數量，然後再開始傳輸。  
@@ -338,22 +337,22 @@ bit_depth = bit_depth >> 1;
 4. `axis_tlast`: 流數據的最後一個信號。  
 5. `axis_tlast_delay`: 流數據的最後一個信號延遲一個時鐘週期。  
 ```v
-	// State variable                                                                    
-	reg [1:0] mst_exec_state;                                                            
-	// Example design FIFO read pointer                                                  
-	reg [bit_num-1:0] read_pointer;                                                      
+// State variable                                                                    
+reg [1:0] mst_exec_state;                                                            
+// Example design FIFO read pointer                                                  
+reg [bit_num-1:0] read_pointer;                                                      
 
-	// AXI Stream internal signals
-	//wait counter. The master waits for the user defined number of clock cycles before initiating a transfer.
-	reg [WAIT_COUNT_BITS-1 : 0] 	count;
-	//streaming data valid
-	wire  	axis_tvalid;
-	//streaming data valid delayed by one clock cycle
-	reg  	axis_tvalid_delay;
-	//Last of the streaming data 
-	wire  	axis_tlast;
-	//Last of the streaming data delayed by one clock cycle
-	reg  	axis_tlast_delay;
+// AXI Stream internal signals
+//wait counter. The master waits for the user defined number of clock cycles before initiating a transfer.
+reg [WAIT_COUNT_BITS-1 : 0] 	count;
+//streaming data valid
+wire  	axis_tvalid;
+//streaming data valid delayed by one clock cycle
+reg  	axis_tvalid_delay;
+//Last of the streaming data 
+wire  	axis_tlast;
+//Last of the streaming data delayed by one clock cycle
+reg  	axis_tlast_delay;
 ```
   
 ## FIFO 的實現信號  
@@ -361,21 +360,28 @@ bit_depth = bit_depth >> 1;
 2. `tx_en`: 傳輸使能信號。  
 3. `tx_done`: 主設備已經發出所有存儲在 FIFO 中的流數據的信號。  
 ```v
-	//FIFO implementation signals
-	reg [C_M_AXIS_TDATA_WIDTH-1 : 0] 	stream_data_out;
-	wire  	tx_en;
-	//The master has issued all the streaming data stored in FIFO
-	reg  	tx_done;
+//FIFO implementation signals
+reg [C_M_AXIS_TDATA_WIDTH-1 : 0] 	stream_data_out;
+wire  	tx_en;
+//The master has issued all the streaming data stored in FIFO
+reg  	tx_done;
 ```
   
 ## 內部信號連接到模組的輸出端口  
 ```v
-	// I/O Connections assignments
-
-	assign M_AXIS_TVALID	= axis_tvalid_delay; //將 axis_tvalid_delay 信號連接到 M_AXIS_TVALID 端口。表示流數據的有效性信號會被延遲一個時鐘週期後輸出。
-	assign M_AXIS_TDATA	= stream_data_out; //將 stream_data_out 信號連接到 M_AXIS_TDATA 端口。表示流數據會被直接輸出。
-	assign M_AXIS_TLAST	= axis_tlast_delay; //將 axis_tlast_delay 信號連接到 M_AXIS_TLAST 端口。表示流數據的最後一個信號會被延遲一個時鐘週期後輸出。
-	assign M_AXIS_TSTRB	= {(C_M_AXIS_TDATA_WIDTH/8){1'b1}}; //將一個值為全 1 的向量連接到 M_AXIS_TSTRB 端口。向量的長度為 C_M_AXIS_TDATA_WIDTH/8，這表示每個字節都是有效的。
+// I/O Connections assignments
+//將 axis_tvalid_delay 信號連接到 M_AXIS_TVALID 端口。
+//表示流數據的有效性信號會被延遲一個時鐘週期後輸出。
+assign M_AXIS_TVALID	= axis_tvalid_delay;
+//將 stream_data_out 信號連接到 M_AXIS_TDATA 端口。
+//表示流數據會被直接輸出。
+assign M_AXIS_TDATA	= stream_data_out;
+//將 axis_tlast_delay 信號連接到 M_AXIS_TLAST 端口。
+//表示流數據的最後一個信號會被延遲一個時鐘週期後輸出。
+assign M_AXIS_TLAST	= axis_tlast_delay;
+////將一個值為全 1 的向量連接到 M_AXIS_TSTRB 端口。
+//向量的長度為 C_M_AXIS_TDATA_WIDTH/8，這表示每個字節都是有效的。
+assign M_AXIS_TSTRB	= {(C_M_AXIS_TDATA_WIDTH/8){1'b1}};
 ```
   
 ## 實現一個控制狀態機  
@@ -458,18 +464,16 @@ assign axis_tlast = (read_pointer == NUMBER_OF_OUTPUT_WORDS-1);
 如果`M_AXIS_ARESETN`為高（即沒有重設），`axis_tvalid_delay`和`axis_tlast_delay`的值就會在下一個時鐘週期與`axis_tvalid`和`axis_tlast`的當前值相同，從而實現了一個時鐘週期的延遲。  
 ```v
 // Delay the axis_tvalid and axis_tlast signal by one clock cycle                              
-	// to match the latency of M_AXIS_TDATA                                                        
-	always @(posedge M_AXIS_ACLK)                                                                  
+// to match the latency of M_AXIS_TDATA                                                        
+always @(posedge M_AXIS_ACLK)                                                                  
 	begin                                                                                          
-	  if (!M_AXIS_ARESETN)                                                                         
-	    begin                                                                                      
-	      axis_tvalid_delay <= 1'b0;                                                               
-	      axis_tlast_delay <= 1'b0;                                                                
+        if (!M_AXIS_ARESETN) begin                                                                                      
+            axis_tvalid_delay <= 1'b0;                                                               
+            axis_tlast_delay <= 1'b0;                                                                
 	    end                                                                                        
-	  else                                                                                         
-	    begin                                                                                      
-	      axis_tvalid_delay <= axis_tvalid;                                                        
-	      axis_tlast_delay <= axis_tlast;                                                          
+        else begin                                                                                      
+            axis_tvalid_delay <= axis_tvalid;                                                        
+            axis_tlast_delay <= axis_tlast;                                                          
 	    end                                                                                        
 	end                                                                                            
 ```
@@ -479,33 +483,27 @@ assign axis_tlast = (read_pointer == NUMBER_OF_OUTPUT_WORDS-1);
 1. 如果 read_pointer 小於等於 NUMBER_OF_OUTPUT_WORDS-1，並且 tx_en 為真（即 FIFO 讀取信號被使能），則 read_pointer 會增加 1，並將 tx_done 設置為 0。  
 2. 如果 read_pointer 等於 NUMBER_OF_OUTPUT_WORDS（即所有的流數據都已經發出），則將 tx_done 設置為 1。  
 ```v
-	//read_pointer pointer
-
-	always@(posedge M_AXIS_ACLK)                                               
-	begin                                                                            
-	  if(!M_AXIS_ARESETN)                                                            
-	    begin                                                                        
-	      read_pointer <= 0;                                                         
-	      tx_done <= 1'b0;                                                           
-	    end                                                                          
-	  else                                                                           
-	    if (read_pointer <= NUMBER_OF_OUTPUT_WORDS-1)                                
-	      begin                                                                      
-	        if (tx_en)                                                               
-	          // read pointer is incremented after every read from the FIFO          
-	          // when FIFO read signal is enabled.                                   
-	          begin                                                                  
-	            read_pointer <= read_pointer + 1;                                    
+//read_pointer pointer
+always@(posedge M_AXIS_ACLK) begin                                                                            
+    if(!M_AXIS_ARESETN) begin                                                                        
+        read_pointer <= 0;                                                         
+        tx_done <= 1'b0;                                                           
+    end                                                                          
+    else                                                                           
+        if (read_pointer <= NUMBER_OF_OUTPUT_WORDS-1) begin                                                                      
+            if (tx_en) begin
+                // read pointer is incremented after every read from the FIFO          
+                // when FIFO read signal is enabled.                                                                                           
+                read_pointer <= read_pointer + 1;                                    
 	            tx_done <= 1'b0;                                                     
-	          end                                                                    
-	      end                                                                        
-	    else if (read_pointer == NUMBER_OF_OUTPUT_WORDS)                             
-	      begin                                                                      
-	        // tx_done is asserted when NUMBER_OF_OUTPUT_WORDS numbers of streaming data
+            end                                                                    
+        end                                                                        
+	    else if (read_pointer == NUMBER_OF_OUTPUT_WORDS) begin                                                                      
+            // tx_done is asserted when NUMBER_OF_OUTPUT_WORDS numbers of streaming data
 	        // has been out.                                                         
 	        tx_done <= 1'b1;                                                         
-	      end                                                                        
-	end  
+        end                                                                        
+end  
 ```
   
 ## FIFO 讀取使能信號的生成以及從 FIFO 讀取流數據  
