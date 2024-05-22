@@ -25,7 +25,6 @@ end
 endmodule
 ```
   
-1.  
 定義了一個名為`Buffer`的模組，該模組有四個輸入：PixelClk、aPixelClkLckd、pVDE 和 pData（24 位元的像素數據）  
 ```v
 module Buffer(
@@ -36,13 +35,11 @@ module Buffer(
 );
 ```
   
-2.  
 定義了一個 96 位元的暫存器陣列`buffer`  
 ```v
 reg [95:0] buffer;
 ```
   
-3.  
 定義了一個`always`區塊，在`PixelClk`的上升沿或`aPixelClkLckd`的下降沿時被觸發。  
 如果`aPixelClkLckd `為 0，則`buffer`被清零。  
 否則，如果`pVDE 為`1，則`buffer`的最新 24 位元被設定為`pData`，其餘位元向左移動。  
@@ -61,7 +58,6 @@ always @(posedge PixelClk or negedge aPixelClkLckd) begin
 end
 ```
   
-4.  
 `Buffer`模組的結束  
 ```v
 endmodule
@@ -108,16 +104,12 @@ endmodule
 ```
   
 模擬波形:  
-1.  
 ![1.png](pictures/1.png "0 ~ 280 ns")
   
-2.  
 ![2.png](pictures/2.png "260 ~ 520 ns")
   
-3.  
 ![3.png](pictures/3.png "500 ~ 760 ns")
   
-4.  
 ![4.png](pictures/4.png "740 ~ 1000 ns")
   
 設定模擬的時間尺度。在這裡，1ns (奈秒) 是模擬的時間單位，而 1ps (皮秒) 是模擬的精度  
