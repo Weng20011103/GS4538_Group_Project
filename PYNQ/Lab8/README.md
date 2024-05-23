@@ -113,7 +113,7 @@
 在剛剛新增的檔案上左鍵兩下來開啟檔案  
 ![37.png](pictures/37.png "圖三十七")
   
-把下方的程式碼貼近檔案中，按 Ctrl + S 存檔  
+把下方的程式碼貼到檔案中，按 Ctrl + S 存檔  
 ```v
 `timescale 1ns / 1ps
 module tb1();
