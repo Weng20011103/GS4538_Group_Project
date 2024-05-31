@@ -20,21 +20,22 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 ```c
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  MouseData01[1] = 0x00;
-  MouseData01[2] = 0x00;
-  int8_t CURSOR_STEP = 0;
+	MouseData01[1] = 0x00;
+	MouseData01[2] = 0x00;
+	int8_t CURSOR_STEP = 0;
 	
-  if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET) {
-    CURSOR_STEP += 1;
-  } else {
+	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET) {
+		CURSOR_STEP += 1;
+	} else {
 		CURSOR_STEP += 0;
 	}
 		
 	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_SET) {
 		CURSOR_STEP += 2;
-		} else {
+	} else {
 		CURSOR_STEP += 0;
 	}
+
 	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == GPIO_PIN_SET) {
 		CURSOR_STEP += 4;
 	} else {
@@ -74,10 +75,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == GPIO_PIN_0) {
 		MouseData01[1] = CURSOR_STEP;
 		USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&MouseData01, sizeof(MouseData01));
-  } else if(GPIO_Pin == GPIO_PIN_1) {
+  	} else if(GPIO_Pin == GPIO_PIN_1) {
 		MouseData01[2] = CURSOR_STEP;
 		USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&MouseData01, sizeof(MouseData01));
-  } else {
+  	} else {
       __NOP();
   }
 }
