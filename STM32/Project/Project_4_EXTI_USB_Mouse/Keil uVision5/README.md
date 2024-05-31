@@ -3,13 +3,13 @@
 開啟`Application/User/Core`中的`main.c`  
 ![1.png](pictures/1.png "1.png")
   
-在`USER CODE BEGIN Includes`和`USER CODE END Includes`中新增下方程式碼  
+在`/* USER CODE BEGIN Includes */`和`/* USER CODE END Includes */`中新增下方程式碼  
 ```c
 #include "usbd_hid.h"
 ```
 ![2.png](pictures/2.png "2.png")
   
-在`USER CODE BEGIN PTD`和`USER CODE END PTD`中新增下方程式碼  
+在`/* USER CODE BEGIN PTD */`和`/* USER CODE END PTD */`中新增下方程式碼  
 ```c
 uint8_t MouseData01[4] = {0,0,0,0};
 extern USBD_HandleTypeDef hUsbDeviceFS;

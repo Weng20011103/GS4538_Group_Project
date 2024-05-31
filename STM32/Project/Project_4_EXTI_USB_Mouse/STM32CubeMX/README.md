@@ -6,16 +6,19 @@
 在`Pinout view`中完成下面兩項操作  
 1. 在`PB0`腳位上左鍵選擇`GPIO_EXTI0`  
 2. 在`PB1`腳位上左鍵選擇`GPIO_EXTI1`  
+  
 ![2.png](pictures/2.png "2.png")
   
 點擊`System Core`中的`GPIO`選項  
 1. 把`PB0`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
 2. 把`PB1`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
+  
 ![3.png](pictures/3.png "3.png")
   
 點擊`NVIC`選項  
 1. 將`EXTI line0 interrupt`的 Enabled 打勾  
 2. 將`EXTI line1 interrupt`的 Enabled 打勾  
+  
 ![4.png](pictures/4.png "4.png")
   
 在`System Core`中的`RCC`選項把`High Speed Clock (HSE)`改成`Crystal/Ceramic Resonator`  
