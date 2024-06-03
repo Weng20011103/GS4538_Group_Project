@@ -9,7 +9,7 @@
 在`Pinout view`中完成下面三項操作  
 1. 在`PB0`腳位上左鍵選擇`GPIO_EXTI0`  
 2. 在`PB1`腳位上左鍵選擇`GPIO_EXTI1`  
-3. 在`PB2`腳位上左鍵選擇`GPIO_EXTI2`  
+3. 在`PB5`腳位上左鍵選擇`GPIO_EXTI5`  
   
 ![3.png](pictures/3.png "3.png")
   
@@ -28,14 +28,14 @@
 點擊`System Core`中的`GPIO`選項  
 1. 把`PB0`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
 2. 把`PB1`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
-3. 把`PB2`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
+3. 把`PB5`的 GPIO mode 改為`External Interrupt Mode with Falling edge trigger detection`  
   
 ![5.png](pictures/5.png "5.png")
   
 點擊`NVIC`選項  
 1. 將`EXTI line0 interrupt`的 Enabled 打勾  
 2. 將`EXTI line1 interrupt`的 Enabled 打勾  
-3. 將`EXTI line2 interrupt`的 Enabled 打勾  
+3. 將`EXTI line[9:5] interrupts`的 Enabled 打勾  
   
 ![6.png](pictures/6.png "6.png")
   

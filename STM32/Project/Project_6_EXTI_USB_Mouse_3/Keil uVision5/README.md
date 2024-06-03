@@ -79,7 +79,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   	} else if(GPIO_Pin == GPIO_PIN_1) {
 		MouseData01[2] = CURSOR_STEP;
 		USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&MouseData01, sizeof(MouseData01));
-  	} else if(GPIO_Pin == GPIO_PIN_2) {
+  	} else if(GPIO_Pin == GPIO_PIN_5) {
 		MouseData01[0] = 0x01;
 		USBD_HID_SendReport(&hUsbDeviceFS, (uint8_t*)&MouseData01, sizeof(MouseData01));
   	} else {
